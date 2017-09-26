@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'cancancan', '~> 2.0'
 gem 'rolify'
+gem 'bootstrap', '~> 4.0.0.beta'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
