@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @tickets = current_user.tickets.order("created_at DESC")
@@ -17,6 +18,15 @@ class TicketsController < ApplicationController
       redirect_to tickets_path, :notice => "Ticket submitted!"
     else
       render "new"
+    end
+  end
+
+  def manage
+    if current_user.has_role? :admin
+      @tickets = Ticket.all.order("created_at DESC")
+      render "manage"
+    else
+      redirect_to root_path
     end
   end
 

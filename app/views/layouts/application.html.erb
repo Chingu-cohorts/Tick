@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Tick</title>
     <%= csrf_meta_tags %>
 
@@ -9,11 +11,9 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p><%= notice %></p>
-    <% elsif alert %>
-      <p><%= alert %></p>
-    <% end %>
+
+    <%= render "partials/navbar" %>
+    <%= render "partials/notification" %>
     
     <%= yield %>
   </body>

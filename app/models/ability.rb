@@ -7,6 +7,7 @@ class Ability
     else
       can :read, Ticket
       can :write, Ticket
+      can :create, Ticket
     end
     # Define abilities for the passed in user here. For example:
     #

@@ -1,14 +1,12 @@
 <div class="container">
-  <h1>Chingu Tickets</h1>
-  <p>Here's a list of all the tickets you've submitted.</p>
-  <%= link_to "New Ticket", new_ticket_path, class: "btn btn-primary" %>
-  
+  <h1>List of tickets</h1>
   <div class="row">
     <% @tickets.each do |ticket| %>
       <div class="card" style="width: 20rem;">
         <div class="card-body">
           <p class="card-text"><%= ticket.description %></p>
-          <p class="mb-2 text-muted"><%= ticket.created_at.strftime("%b %d %Y, %H:%M") %></p>
+          <p class="mb-2 text-muted">By <%= ticket.user.email %> - <%= ticket.created_at.strftime("%b %d %Y, %H:%M") %></p>
+          <a href="#" class="btn btn-primary">Process</a>
         </div>
       </div>
     <% end %>
