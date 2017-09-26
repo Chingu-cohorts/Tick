@@ -1,0 +1,7 @@
+<div>
+  <h1>Chingu Tickets</h1>
+  <p>Here's a list of all the tickets you've submitted.</p>
+  <% @tickets.each do |ticket| %>
+    <span><%= ticket.description %></span>
+  <% end %>
+</div>
