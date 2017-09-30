@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_ticket, only: [:edit, :update]
   load_and_authorize_resource
 
   def index
@@ -21,6 +22,17 @@ class TicketsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @ticket.update(ticket_params)
+      redirect_to tickets_manage_path, :notice => "Ticket handled"
+    else
+      render "edit"
+    end
+  end
+
   def manage
     if current_user.has_role? :admin
       @tickets = Ticket.all.order("created_at DESC")
@@ -32,6 +44,11 @@ class TicketsController < ApplicationController
 
   private
     def ticket_params
-      params.require(:ticket).permit(:description)
+      params.require(:ticket).permit(:description, :is_processed)
     end
+
+    def find_ticket
+      @ticket = Ticket.find(params[:id])
+    end
+
 end

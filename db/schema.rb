@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170926021543) do
 
   create_table "tickets", force: :cascade do |t|
     t.text "description"
+    t.boolean "is_processed", default: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

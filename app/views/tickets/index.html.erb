@@ -5,10 +5,13 @@
   
   <div class="row">
     <% @tickets.each do |ticket| %>
-      <div class="card" style="width: 20rem;">
+      <div class="card ticket-box">
         <div class="card-body">
           <p class="card-text"><%= ticket.description %></p>
           <p class="mb-2 text-muted"><%= ticket.created_at.strftime("%b %d %Y, %H:%M") %></p>
+          <% if ticket.is_processed? %>
+            <strong class="mb-2">Processed</strong>
+          <% end %>
         </div>
       </div>
     <% end %>

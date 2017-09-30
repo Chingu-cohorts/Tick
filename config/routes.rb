@@ -2,6 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "tickets#index"
-  resources :tickets, only: [:index, :new, :create]
+  resources :tickets, except: [:destroy, :show]
   get "/tickets/manage", to: "tickets#manage"
 end
